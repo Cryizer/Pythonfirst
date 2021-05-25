@@ -1,6 +1,18 @@
 {% extends "base.html" %}
 
 {% block part %}
-	<p>Block tester</p>
+	{% if True %}
+		<p>It's true</p>
+	{% else %}
+		<p>It's false</p>
+	{% endif %}
+
+	{% if animals %}
+		<p>Eläimiä on</p>
+	{% else %}
+		<p>Eläimet loppu</p>
+	{% endif %}
+
+
 {% endblock part %}
 
