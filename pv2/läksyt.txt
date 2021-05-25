@@ -1,0 +1,9 @@
+pw2.1 Muuttuja muottiin. Lähetä ohjelmasta jokin muuttuja muottiin, ja tulosta se {{ kissanViiksilla }}.
+
+pw2.2 Tuplamuotti. Tee Flask-ohjelma, jossa on kaksi reittiä, joista näkyy eri sivu. Tee erikseen "base.html" pohjamuotti, ja kaksi muottia, jotka laajentavat (extends) sitä. Validoi HTML kultakin sivulta. Opettele sivun koodi ulkoa niin, että osaat kirjoittaa sen alusta loppuun katsomatta edellisistä mallia.
+
+pw2.3 Toista tätä, toista tätä. Lähetä ohjelmasta lista muottiin, ja tulosta sen arvot for-in rakenteella.
+
+
+Name muuttuja minulla on jokaisessa html tiedostossa.
+Flask tiedostosta lähtee 5 eri linkkiä html tiedostoihin, joissa testasin eri asioita
