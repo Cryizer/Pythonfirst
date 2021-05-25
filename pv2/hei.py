@@ -2,10 +2,9 @@ from flask import Flask, render_template
 
 app=Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-	animals = ["lion", "tiger", "rabbit", "racoon"]
-	return render_template("base.html", name="Krister", animals=animals)
+	return render_template("base.html", name="Krister")
 
 @app.route("/kek")
 def kek():
