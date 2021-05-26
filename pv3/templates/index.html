@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% for asiakas in asiakkaat %}
+		<p>Etunimi:{{ asiakas.firstname  }} <br> Sukunimi:{{ asiakas.lastname  }} <br>  Puhelinnumero: {{ asiakas.number }}</p>
+	{% endfor %}
+{% endblock content %}
