@@ -1,10 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms.ext.sqlalchemy.orm import model_form
 
 app = Flask(__name__)
-app.secret_key = "paishfgos9823a.j23.s"
+app.secret_key = "maijiegao1sha3Uxeeth"
 db = SQLAlchemy(app)
 
 class Asiakkaat(db.Model):
@@ -37,5 +37,17 @@ def data():
 	form = AsiakkaatForm()
 	print(request.form)
 	return render_template("data.html", form=form)
+
+@app.route("/msg")
+def msg():
+	flash("Redirected here")
+	return redirect("/")
+
+@app.route("/test")
+def test():
+	flash("Wrong page, try again please")
+	return redirect("/")
+
+
 
 app.run()

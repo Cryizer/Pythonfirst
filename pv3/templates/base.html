@@ -1,12 +1,19 @@
 <!doctype html>
 <html lang=en>
 	<head>
-		<title>Databases</title>
+		<title>Python Codes</title>
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h1>Databases</h1>
+		<h1>Python Codes</h1>
+			{% if get_flashed_messages() %}
+                                {% for message in get_flashed_messages() %}
+                                <p> <br> {{message}} <br> </p>
+                                {% endfor %}
+                        {% endif %}
+
 		{% block content%}
+			<p> <br> This is frontpage <br> </p>
 		{% endblock content%}
 	</body>
 </html>
