@@ -6,5 +6,6 @@ pw3.2 Automaattinen tietokanta ja lomake. Tee yksinkertainen Flask-ohjelma, jois
 
 
 /msg ja /test ohjaa käyttäjän takaisin default sivulle flash viestin kera.
+
 laksy.py tuottaa yksinkertaisen tietokanta sivun
 
