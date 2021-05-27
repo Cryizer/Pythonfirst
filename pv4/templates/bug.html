@@ -1,0 +1,11 @@
+{% set title="Bug sightings" %}
+{% extends "base.html" %}
+
+{% block content %}
+	{% for bug in bugs %}
+		<p>
+			{{ bug.name }} - {{ bug.color }}
+			<a href="bug/{{bug.id}}/edit">Edit</a>
+		</p>
+	{% endfor %}
+{% endblock content %}

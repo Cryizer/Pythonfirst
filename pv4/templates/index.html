@@ -1,0 +1,11 @@
+{% set title="Favourite foods" %}
+{% extends "base.html" %}
+
+{% block content %}
+	{% for food in foods %}
+		<p>
+			{{ food.name }} -
+			<a href="{{food.id}}/edit">Edit</a>
+		</p>
+	{% endfor %}
+{% endblock content %}
