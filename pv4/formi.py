@@ -64,6 +64,15 @@ def add(id=None):
 	return render_template("add.html", form=form)
 
 
+@app.route("/<int:id>/delete")
+def deletefood(id):
+    food = Food.query.get_or_404(id)
+    db.session.delete(food)
+    db.session.commit()
+
+    flash("Deleted.")
+    return redirect("/")
+
 @app.route("/bug")
 def bugdb():
         bugs = Bug.query.all()
@@ -88,6 +97,16 @@ def editing(id=None):
                 flash("Added bug you saw")
                 return redirect("/bug")
         return render_template("saw.html", form=form)
+
+
+@app.route("/bug/<int:id>/delete")
+def deletebug(id):
+    bug = Bug.query.get_or_404(id)
+    db.session.delete(bug)
+    db.session.commit()
+
+    flash("Deleted.")
+    return redirect("/bug")
 
 
 if __name__ == "__main__":

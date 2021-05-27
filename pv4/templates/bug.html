@@ -5,7 +5,8 @@
 	{% for bug in bugs %}
 		<p>
 			{{ bug.name }} - {{ bug.color }}
-			<a href="bug/{{bug.id}}/edit">Edit</a>
+			<a href="bug/{{bug.id}}/edit">Edit</a> - 
+			<a href="bug/{{bug.id}}/delete">Delete</a>
 		</p>
 	{% endfor %}
 {% endblock content %}

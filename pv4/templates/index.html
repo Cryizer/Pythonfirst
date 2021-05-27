@@ -5,7 +5,8 @@
 	{% for food in foods %}
 		<p>
 			{{ food.name }} -
-			<a href="{{food.id}}/edit">Edit</a>
+			<a href="{{food.id}}/edit">Edit</a> -
+			<a href="{{food.id}}/delete">Delete</a>
 		</p>
 	{% endfor %}
 {% endblock content %}
