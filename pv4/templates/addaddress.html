@@ -1,0 +1,25 @@
+{% set title="Add people to the book" %}
+{% extends "base.html" %}
+
+{% block links %}
+        <nav>
+                <a href="/">Addressbook</a> - -
+                <a href="/add">Add new</a>
+
+        </nav>
+{% endblock links %}
+
+{% block content %}
+<form method=POST>
+        {% for field in form %}
+        <p> 
+		{% if not field.flags.hidden %}
+        		{{ field.label }}<br>
+        	{% endif %}
+        	{{ field }}
+	 </p>
+        {% endfor %}
+        <input type=submit>
+        </form>
+
+{% endblock content %}

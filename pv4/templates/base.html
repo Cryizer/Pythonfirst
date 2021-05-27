@@ -10,6 +10,7 @@
 		<meta name=viewport content="width=device-width, initial-scale=1">
 	</head>
 	<body>
+		{% block links %}
 		<nav>
 			<a href="/">Foods</a> - 
 			<a href="/add">Add new foods</a> - 
@@ -17,6 +18,8 @@
 			<a href="/new">Add new bugs</a> - 
 			
 		</nav>
+		{% endblock links %}
+
 		<h1>{{ title }}</h1>
 		{% for msg in get_flashed_messages() %}
 			<p><b>{{ msg }}</b></p>

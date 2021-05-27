@@ -1,0 +1,23 @@
+{% set title="Addressbook" %}
+{% extends "base.html" %}
+
+{% block links %}
+	<nav>
+		<a href="/">Addressbook</a> - -
+		<a href="/add">Add new</a> 
+
+	</nav>
+{% endblock links %}
+
+
+{% block content %}
+	{% for book in books %}
+		<p>
+			{{ book.firstname }} {{ book.lastname }} -
+			{{ book.address }} - {{ book.email }} -
+			{{ book.phone }} 
+			<a href="{{book.id}}/edit">Edit</a> -
+			<a href="{{book.id}}/delete">Delete</a>
+		</p>
+	{% endfor %}
+{% endblock content %}
