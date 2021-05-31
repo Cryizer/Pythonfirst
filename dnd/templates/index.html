@@ -1,0 +1,15 @@
+{% set title="Your Teejo Tasks" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% for task in tasks %}
+		<p>
+			<a href="/task/{{ task.id }}/edit">
+				{{ task.name }}
+			</a> -
+			<a href="/task/{{ task.id }}/delete">Delete</a>
+		</p>
+	{% endfor %}
+	
+{% endblock content %}
