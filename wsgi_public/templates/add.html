@@ -1,0 +1,25 @@
+{% set title="Add Book 160" %}
+{% extends "base.html" %}
+
+{% block content %}
+	<p>Add a book and write its description in 160 words or less</p>
+	<br>
+
+	<form method=post>
+		{% for field in fields %}
+			{% if not field.flags.hidden %}
+				{{ field.label }}
+			{% endif %}
+
+			{{ field }}
+
+			{% for err in field.errors %}
+				<b>{{ err }}</b>
+			{% endfor %}
+
+			<br>
+		{% endfor %}
+		<input type=submit>
+	</form>
+
+{% endblock content %}
