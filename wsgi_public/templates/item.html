@@ -1,0 +1,19 @@
+{% set title="Item Database" %}
+{% extends "base.html" %}
+
+{% block content %}
+
+	{% for item in items %}
+		<p>
+				{{ item.name }} <br> 
+				{{ item.category }} <br>
+				{{ item.desc }}
+			{% if currentUser() %} -
+			<a href="/items/{{ item.id }}/edit">Edit
+			</a> -
+			<a href="/items/{{ item.id }}/delete">Delete</a>
+			{% endif %}
+		</p>
+	{% endfor %}
+	
+{% endblock content %}

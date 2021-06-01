@@ -1,4 +1,4 @@
-from flask import Flask, render_template, flash, redirect, session
+from flask import Flask, render_template, flash, redirect, session, abort
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms.ext.sqlalchemy.orm import model_form
@@ -7,14 +7,15 @@ from wtforms import StringField, PasswordField, validators
 
 app = Flask(__name__)
 app.secret_key = "Ieph1che9Ea3Phighul5FohM0iivee"
-app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql:///krister'
+app.config["SQLALCHEMY_DATABASE_URI"] = 'postgresql:///kk'
 db = SQLAlchemy(app)
 
-class Task(db.Model):
+class Book(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
-	name = db.Column(db.String, nullable=False)
+	name = db.Column(db.String, nullable=False, unique=True)
+	desc = db.Column(db.Text(160), nullable=False)
 
-TaskForm = model_form(Task, base_class=FlaskForm, db_session=db.session)
+BookForm = model_form(Book, base_class=FlaskForm, db_session=db.session)
 
 class User(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -112,27 +113,24 @@ def logoutView():
 def initDb():
 	db.create_all()
 
-	task = Task(name="Jog 10 km")
-	db.session.add(task)
-	db.session.commit()
 
 @app.errorhandler(404)
 def custom404(e):
 	return render_template("404.html")
 
-@app.route("/task/<int:id>/edit", methods=["GET", "POST"])
-@app.route("/task/add", methods=["GET", "POST"])
+@app.route("/book/<int:id>/edit", methods=["GET", "POST"])
+@app.route("/book/add", methods=["GET", "POST"])
 def addView(id=None):
 	loginRequired()
-	task = Task()
+	book = Book()
 	if id:
-		task = Task.query.get_or_404(id)
+		book = Book.query.get_or_404(id)
 
-	fields = TaskForm(obj=task)
+	fields = BookForm(obj=book)
 
 	if fields.validate_on_submit():
-		fields.populate_obj(task)
-		db.session.add(task)
+		fields.populate_obj(book)
+		db.session.add(book)
 		db.session.commit()
 
 		flash("Added!")
@@ -140,11 +138,11 @@ def addView(id=None):
 
 	return render_template("add.html", fields=fields)
 
-@app.route("/task/<int:id>/delete")
+@app.route("/book/<int:id>/delete")
 def deleteView(id):
 	loginRequired()
-	task = Task.query.get_or_404(id)
-	db.session.delete(task)
+	book = Book.query.get_or_404(id)
+	db.session.delete(book)
 	db.session.commit()
 
 	flash("Deleted.")
@@ -152,9 +150,5 @@ def deleteView(id):
 
 @app.route("/")
 def indexView():
-	tasks = Task.query.all()
-	return render_template("index.html", tasks=tasks)
-
-if __name__ == "__main__":
-
-	app.run()
+	books = Book.query.all()
+	return render_template("index.html", books=books)

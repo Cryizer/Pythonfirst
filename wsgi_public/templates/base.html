@@ -1,5 +1,5 @@
 {% if not title %}
-	{% set title="Welcome to Book 160" %}
+	{% set title="Dungeons & Dragons meetup" %}
 {% endif %}
 
 <!doctype html>
@@ -9,15 +9,15 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		{% for msg in get_flashed_messages() %}
-			<p><b>{{ msg }}</b></p>
-		{% endfor %}
 		<nav>
 			<a href="/">Home</a> - 
 			{% if currentUser() %}
-				<a href="/book/add">Add book</a> - 
-				<a href="/user/logout">Logout</a> - 
-				{{ currentUser().email }} - 
+				<a href="/player/add">Add player profile</a> -
+				<a href="/items">Item database</a> -
+				<a href="/items/add">Add Items</a> - 
+				<a href="/dice">Roll dice</a> -  
+				<a href="/user/logout">Logout</a> -
+				{{ currentUser().email }}  
 			{% else %}
 				<a href="/user/login">Login</a> - 
 				<a href="/user/register">Register</a>
@@ -26,6 +26,10 @@
 
 		<h1>{{ title }}</h1>
 		
+		{% for msg in get_flashed_messages() %}
+			<p><b>{{ msg }}</b></p>
+		{% endfor %}
+		<br>
 		{% block content %}
 		<p>Welcome</p>
 		{% endblock content %}

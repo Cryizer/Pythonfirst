@@ -1,5 +1,5 @@
 {% if not title %}
-	{% set title="Welcome to Teejo" %}
+	{% set title="Welcome to Book 160" %}
 {% endif %}
 
 <!doctype html>
@@ -14,8 +14,8 @@
 		{% endfor %}
 		<nav>
 			<a href="/">Home</a> - 
-			<a href="/task/add">Add task</a> - 
 			{% if currentUser() %}
+				<a href="/book/add">Add book</a> - 
 				<a href="/user/logout">Logout</a> - 
 				{{ currentUser().email }} - 
 			{% else %}

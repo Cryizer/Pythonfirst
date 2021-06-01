@@ -1,16 +1,17 @@
-{% set title="Book 160" %}
+{% set title="Dungeons & Dragons meetup" %}
 {% extends "base.html" %}
 
 {% block content %}
 
-	{% for book in books %}
+	{% for player in players %}
 		<p>
-				{{ book.name }} <br> 
-				{{ book.desc }}
+				{{ player.name }} <br> 
+				{{ player.role }} <br>
+				{{ player.desc }}
 			{% if currentUser() %} -
-			<a href="/book/{{ book.id }}/edit">Edit
+			<a href="/player/{{ player.id }}/edit">Edit
 			</a> -
-			<a href="/book/{{ book.id }}/delete">Delete</a>
+			<a href="/player/{{ player.id }}/delete">Delete</a>
 			{% endif %}
 		</p>
 	{% endfor %}
