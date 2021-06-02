@@ -1,3 +1,5 @@
+!Still in beta phase!
+
 dnd.py is the main file of the project.
 
 http://kristerkarlsson.tk/
